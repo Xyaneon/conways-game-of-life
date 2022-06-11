@@ -50,16 +50,35 @@ namespace Xyaneon.Games.ConwaysGameOfLife.CLI
                 Console.WriteLine();
                 ConsolePrinter.PrintTick(tick);
                 ConsolePrinter.PrintState(currentState);
-
+                Console.WriteLine();
                 ConsolePrinter.PrintInteractiveOptions();
-                ConsoleKeyInfo consoleKeyInfo = Console.ReadKey(true);
-                if (consoleKeyInfo.KeyChar == 'q')
-                {
-                    quit = true;
-                }
 
-                currentState = StateUpdater.GetNextState(currentState);
-                tick++;
+
+                bool keyRecognized = false;
+                while (!keyRecognized)
+                {
+                    ConsoleKeyInfo consoleKeyInfo = Console.ReadKey(true);
+                    switch (consoleKeyInfo.KeyChar)
+                    {
+                        case 'q':
+
+                            quit = true;
+                            keyRecognized = true;
+                            break;
+
+                        case 'n':
+                            currentState = StateUpdater.GetNextState(currentState);
+                            tick++;
+                            keyRecognized = true;
+                            break;
+
+                        default:
+
+                            Console.Beep();
+                            keyRecognized = false;
+                            break;
+                    }
+                }
             }
         }
     }
