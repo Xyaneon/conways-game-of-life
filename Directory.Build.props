@@ -1,0 +1,10 @@
+<Project>
+    <PropertyGroup>
+        <Version>0.1.0</Version>
+        <Authors>Christopher Kyle Horton</Authors>
+        <Company>Christopher Kyle Horton</Company>
+        <Copyright>Copyright © Christopher Kyle Horton 2022</Copyright>
+        <RepositoryUrl>https://github.com/Xyaneon/conways-game-of-life</RepositoryUrl>
+        <RepositoryBranch>main</RepositoryBranch>
+    </PropertyGroup>
+</Project>
