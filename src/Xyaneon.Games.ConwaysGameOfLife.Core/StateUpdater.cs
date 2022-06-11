@@ -22,6 +22,27 @@ public class StateUpdater
     /// </remarks>
     public static bool[,] GetNextState(bool[,] startingState)
     {
-        return startingState;
+        int rowCount = startingState.GetLength(0);
+        int columnCount = startingState.GetLength(1);
+        bool[,] newState = new bool[rowCount, columnCount];
+
+        for (int row = 0; row < rowCount; row++)
+        {
+            for (int column = 0; column < columnCount; column++)
+            {
+                int livingNeighborsCount = StateInspector.CountLivingNeighbors(startingState, row, column);
+
+                if (startingState[row, column])
+                {
+                    newState[row, column] = livingNeighborsCount == 2 || livingNeighborsCount == 3;
+                }
+                else
+                {
+                    newState[row, column] = livingNeighborsCount == 3;
+                }
+            }
+        }
+
+        return newState;
     }
 }
