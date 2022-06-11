@@ -18,6 +18,8 @@ The app can currently load Game of Life files in the Plaintext file format (`.ce
 dotnet run --project src/Xyaneon.Games.ConwaysGameOfLife.CLI/Xyaneon.Games.ConwaysGameOfLife.CLI.csproj --file samples/blinker.cells
 ```
 
+The console app is interactive. It will print the updated state into the terminal each time you press any key, until you press <kbd>Q</kbd> to quit.
+
 ## Background
 
 This project is my entry into a sort of coding competition among friends.
