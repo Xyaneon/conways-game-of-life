@@ -2,6 +2,7 @@
 using System.IO;
 
 using Xyaneon.Games.ConwaysGameOfLife.CLI.FileHandling;
+using Xyaneon.Games.ConwaysGameOfLife.Core;
 
 namespace Xyaneon.Games.ConwaysGameOfLife.CLI
 {
@@ -39,13 +40,27 @@ namespace Xyaneon.Games.ConwaysGameOfLife.CLI
             PlaintextFileContents contents = PlaintextFileReader.ReadFile(fileInfo);
 
             ConsolePrinter.PrintFileInformation(contents);
-            Console.WriteLine();
 
             bool[,] currentState = contents.State;
             int tick = 0;
+            bool quit = false;
 
-            ConsolePrinter.PrintTick(tick);
-            ConsolePrinter.PrintState(contents.State);
+            while (!quit)
+            {
+                Console.WriteLine();
+                ConsolePrinter.PrintTick(tick);
+                ConsolePrinter.PrintState(currentState);
+
+                ConsolePrinter.PrintInteractiveOptions();
+                ConsoleKeyInfo consoleKeyInfo = Console.ReadKey(true);
+                if (consoleKeyInfo.KeyChar == 'q')
+                {
+                    quit = true;
+                }
+
+                currentState = StateUpdater.GetNextState(currentState);
+                tick++;
+            }
         }
     }
 }

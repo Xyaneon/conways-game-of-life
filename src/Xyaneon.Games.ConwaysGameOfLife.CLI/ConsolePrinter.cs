@@ -16,6 +16,11 @@ namespace Xyaneon.Games.ConwaysGameOfLife.CLI
             Console.WriteLine(contents.Description);
         }
 
+        public static void PrintInteractiveOptions()
+        {
+            Console.WriteLine("Press (q) to quit, or any other key to advance to the next tick");
+        }
+
         public static void PrintState(bool[,] state)
         {
             for (int row = 0; row < state.GetLength(0); row++)
