@@ -12,7 +12,7 @@ To run it, you will first need .NET 6 installed. Once this is set up, navigate i
 dotnet run --project src/Xyaneon.Games.ConwaysGameOfLife.CLI/Xyaneon.Games.ConwaysGameOfLife.CLI.csproj --file <file_name_here>
 ```
 
-The app can currently load Game of Life files in the Plaintext file format (`.cells` extension). You can either supply your own, or try one of the included examples in the `samples/` directory. For example, here's the same command with the `samples/blinker.cells` path provided:
+The app can currently load Game of Life files in the [Plaintext file format](https://conwaylife.com/wiki/Plaintext) (`.cells` extension). You can either supply your own, or try one of the included examples in the `samples/` directory. For example, here's the same command with the `samples/blinker.cells` path provided:
 
 ```Bash
 dotnet run --project src/Xyaneon.Games.ConwaysGameOfLife.CLI/Xyaneon.Games.ConwaysGameOfLife.CLI.csproj --file samples/blinker.cells
