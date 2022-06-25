@@ -44,7 +44,7 @@ public static class PlaintextFileParser
                 if (lineLength != -1 && parsedStateLine.Length != lineLength)
                 {
                     var message = $"Inconsistent state line length at line {lineNumber + 1} (expected {lineLength}, but got {parsedStateLine.Length}).";
-                    throw new ArgumentException(message, nameof(lines));
+                    throw new FormatException(message);
                 }
                 stateLines.Enqueue(parsedStateLine);
                 lineLength = parsedStateLine.Length;
