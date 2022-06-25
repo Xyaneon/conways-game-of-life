@@ -17,7 +17,7 @@
             <MenuItem Header="_File">
                 <MenuItem Header="_Open..."/>
                 <Separator/>
-                <MenuItem Header="_Quit"/>
+                <MenuItem Header="_Quit" Command="{Binding QuitCommand}"/>
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_About..."/>
