@@ -27,4 +27,8 @@
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.14" />
 	<PackageReference Include="XamlNameReferenceGenerator" Version="1.3.4" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Xyaneon.Games.ConwaysGameOfLife.Core\Xyaneon.Games.ConwaysGameOfLife.Core.csproj" />
+    <ProjectReference Include="..\Xyaneon.Games.ConwaysGameOfLife.FileIO\Xyaneon.Games.ConwaysGameOfLife.FileIO.csproj" />
+  </ItemGroup>
 </Project>
