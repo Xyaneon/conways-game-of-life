@@ -1,8 +1,7 @@
 ﻿using ReactiveUI;
 
-namespace Xyaneon.Games.ConwaysGameOfLife.Avalonia.ViewModels
+namespace Xyaneon.Games.ConwaysGameOfLife.Avalonia.ViewModels;
+
+public class ViewModelBase : ReactiveObject
 {
-    public class ViewModelBase : ReactiveObject
-    {
-    }
 }

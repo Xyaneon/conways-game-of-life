@@ -3,31 +3,30 @@ using Avalonia.Controls.ApplicationLifetimes;
 using ReactiveUI;
 using System.Reactive;
 
-namespace Xyaneon.Games.ConwaysGameOfLife.Avalonia.ViewModels
+namespace Xyaneon.Games.ConwaysGameOfLife.Avalonia.ViewModels;
+
+public class MainWindowViewModel : ViewModelBase
 {
-    public class MainWindowViewModel : ViewModelBase
+    public MainWindowViewModel()
     {
-        public MainWindowViewModel() {
-            QuitCommand = ReactiveCommand.Create(RunQuitCommand);
-        }
+        QuitCommand = ReactiveCommand.Create(RunQuitCommand);
+    }
 
-        public string Greeting => "Welcome to Avalonia!";
+    public string Greeting => "Welcome to Avalonia!";
 
-        public ReactiveCommand<Unit, Unit> QuitCommand { get; }
+    public ReactiveCommand<Unit, Unit> QuitCommand { get; }
 
-        void RunQuitCommand()
+    void RunQuitCommand()
+    {
+        Application? currentApplication = Application.Current;
+        if (currentApplication != null)
         {
-            Application? currentApplication = Application.Current;
-            if (currentApplication != null)
+            IApplicationLifetime? lifetime = currentApplication.ApplicationLifetime;
+            if (lifetime != null)
             {
-                IApplicationLifetime? lifetime = currentApplication.ApplicationLifetime;
-                if (lifetime != null)
-                {
-                    var classicDesktopLifetime = (IClassicDesktopStyleApplicationLifetime)lifetime;
-                    classicDesktopLifetime.Shutdown();
-                }
+                var classicDesktopLifetime = (IClassicDesktopStyleApplicationLifetime)lifetime;
+                classicDesktopLifetime.Shutdown();
             }
         }
     }
-    
 }
