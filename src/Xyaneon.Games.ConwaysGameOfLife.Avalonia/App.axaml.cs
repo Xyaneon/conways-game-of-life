@@ -1,6 +1,8 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Xyaneon.Games.ConwaysGameOfLife.Avalonia.ViewModels;
+using Xyaneon.Games.ConwaysGameOfLife.Avalonia.Views;
 
 namespace Xyaneon.Games.ConwaysGameOfLife.Avalonia
 {
@@ -15,7 +17,10 @@ namespace Xyaneon.Games.ConwaysGameOfLife.Avalonia
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new MainWindow();
+                desktop.MainWindow = new MainWindow
+                {
+                    DataContext = new MainWindowViewModel(),
+                };
             }
 
             base.OnFrameworkInitializationCompleted();
