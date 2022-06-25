@@ -5,11 +5,6 @@ namespace Xyaneon.Games.ConwaysGameOfLife.FileIO.Plaintext;
 
 public static class PlaintextFileParser
 {
-    private const char AliveCellChar = 'O';
-    private const char DeadCellChar = '.';
-    private const char DescriptionLineStartingChar = '!';
-    private const string NameLinePrefix = "!Name:";
-
     public static PlaintextFileContents ParseLines(IEnumerable<string> lines)
     {
         bool nameLineWasParsed = false;
@@ -30,7 +25,7 @@ public static class PlaintextFileParser
                 name = ParseNameLine(line);
                 nameLineWasParsed = true;
             }
-            else if (line.StartsWith(DescriptionLineStartingChar))
+            else if (line.StartsWith(PlaintextFileConstants.DescriptionLineStartingChar))
             {
                 if (!descriptionWasParsed)
                 {
@@ -78,12 +73,12 @@ public static class PlaintextFileParser
 
     public static string ParseNameLine([DisallowNull] string line)
     {
-        if (!line.StartsWith(NameLinePrefix))
+        if (!line.StartsWith(PlaintextFileConstants.NameLinePrefix))
         {
-            throw new FormatException($"The line does not conform to the Plaintext name format (missing '{NameLinePrefix}' prefix).");
+            throw new FormatException($"The line does not conform to the Plaintext name format (missing '{PlaintextFileConstants.NameLinePrefix}' prefix).");
         }
 
-        return line.Substring(NameLinePrefix.Length).Trim();
+        return line.Substring(PlaintextFileConstants.NameLinePrefix.Length).Trim();
     }
 
     public static string ParseDescriptionLine([DisallowNull] string line)
@@ -93,7 +88,7 @@ public static class PlaintextFileParser
             throw new FormatException("The line does not conform to the Plaintext description format.");
         }
 
-        return line.TrimStart(DescriptionLineStartingChar);
+        return line.TrimStart(PlaintextFileConstants.DescriptionLineStartingChar);
     }
 
     public static bool[] ParseStateLine([DisallowNull] string line)
@@ -104,8 +99,8 @@ public static class PlaintextFileParser
         {
             bool isAlive = line[position] switch
             {
-                AliveCellChar => true,
-                DeadCellChar => false,
+                PlaintextFileConstants.AliveCellChar => true,
+                PlaintextFileConstants.DeadCellChar => false,
                 _ => throw new FormatException($"Unrecognized character at position {position}.")
             };
 
