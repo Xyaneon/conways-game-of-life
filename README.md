@@ -1,5 +1,7 @@
 # Conway's Game of Life
 
+![Screenshot of CLI app in Ubuntu Terminal][CLI app screenshot]
+
 This project implements [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life).
 
 ## Usage
@@ -47,4 +49,5 @@ This project is my entry into a sort of coding competition among friends.
 This project is free and open-source software (FOSS) released under an MIT license. See [LICENSE.txt](https://github.com/Xyaneon/conways-game-of-life/blob/main/LICENSE.txt) for details.
 
 
+[CLI app screenshot]: https://github.com/Xyaneon/conways-game-of-life/blob/main/screenshots/cli-screenshot.png
 [Install .NET 6]: https://dotnet.microsoft.com/en-us/download/dotnet/6.0
