@@ -24,6 +24,12 @@ public class MainWindowViewModel : ViewModelBase
         if (App.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             var dialog = new OpenFileDialog();
+            var plaintextFileFilter = new FileDialogFilter {
+                Name = "Plaintext files (*.cells)",
+                Extensions = { "cells" },
+            };
+            dialog.Filters.Add(plaintextFileFilter);
+
             var result = await dialog.ShowAsync(desktop.MainWindow);
 
             if (result is not null)
