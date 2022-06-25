@@ -14,7 +14,7 @@ public static class PlaintextFileReader
     /// <returns>A new <see cref="PlaintextFileContents"/> containing the parsed file data.</returns>
     public static PlaintextFileContents ReadFile([DisallowNull] FileInfo fileInfo)
     {
-        List<string> fileLines = File.ReadAllLines(fileInfo.FullName).ToList();
+        IEnumerable<string> fileLines = File.ReadAllLines(fileInfo.FullName);
         return PlaintextFileParser.ParseLines(fileLines);
     }
 }
