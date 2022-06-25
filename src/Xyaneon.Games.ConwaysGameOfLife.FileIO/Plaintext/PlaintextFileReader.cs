@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-namespace Xyaneon.Games.ConwaysGameOfLife.CLI.FileHandling;
+namespace Xyaneon.Games.ConwaysGameOfLife.FileIO.Plaintext;
 
 public static class PlaintextFileReader
 {

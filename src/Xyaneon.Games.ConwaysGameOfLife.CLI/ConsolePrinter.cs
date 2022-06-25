@@ -1,4 +1,4 @@
-using Xyaneon.Games.ConwaysGameOfLife.CLI.FileHandling;
+using Xyaneon.Games.ConwaysGameOfLife.FileIO.Plaintext;
 
 namespace Xyaneon.Games.ConwaysGameOfLife.CLI
 {

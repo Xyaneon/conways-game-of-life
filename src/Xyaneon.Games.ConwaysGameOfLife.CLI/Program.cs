@@ -1,8 +1,7 @@
 ﻿using System.CommandLine;
-using System.IO;
 
-using Xyaneon.Games.ConwaysGameOfLife.CLI.FileHandling;
 using Xyaneon.Games.ConwaysGameOfLife.Core;
+using Xyaneon.Games.ConwaysGameOfLife.FileIO.Plaintext;
 
 namespace Xyaneon.Games.ConwaysGameOfLife.CLI
 {
