@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xyaneon.Games.ConwaysGameOf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xyaneon.Games.ConwaysGameOfLife.FileIO.Test", "test\Xyaneon.Games.ConwaysGameOfLife.FileIO.Test\Xyaneon.Games.ConwaysGameOfLife.FileIO.Test.csproj", "{83093071-36E2-4B05-8169-203CC959457E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xyaneon.Games.ConwaysGameOfLife.Avalonia", "src\Xyaneon.Games.ConwaysGameOfLife.Avalonia\Xyaneon.Games.ConwaysGameOfLife.Avalonia.csproj", "{5E421381-36A0-481D-AC7A-6C4278487D4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{83093071-36E2-4B05-8169-203CC959457E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83093071-36E2-4B05-8169-203CC959457E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83093071-36E2-4B05-8169-203CC959457E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E421381-36A0-481D-AC7A-6C4278487D4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E421381-36A0-481D-AC7A-6C4278487D4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E421381-36A0-481D-AC7A-6C4278487D4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E421381-36A0-481D-AC7A-6C4278487D4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8481750A-02F8-4314-8279-09E3B4BA5C1E} = {E20E9D68-30B9-47A4-BD7C-39CACE06B674}
@@ -53,5 +59,6 @@ Global
 		{C8D19A2C-68E5-4DBB-B65B-9EC7273B76C7} = {E20E9D68-30B9-47A4-BD7C-39CACE06B674}
 		{0440C189-FAFE-4DED-AE83-038965FC0866} = {E20E9D68-30B9-47A4-BD7C-39CACE06B674}
 		{83093071-36E2-4B05-8169-203CC959457E} = {524C6C29-5EC0-40BB-B6BD-6E929AB9CA04}
+		{5E421381-36A0-481D-AC7A-6C4278487D4B} = {E20E9D68-30B9-47A4-BD7C-39CACE06B674}
 	EndGlobalSection
 EndGlobal
