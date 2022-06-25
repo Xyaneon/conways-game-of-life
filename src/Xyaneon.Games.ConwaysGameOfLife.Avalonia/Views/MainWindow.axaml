@@ -6,12 +6,25 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Xyaneon.Games.ConwaysGameOfLife.Avalonia.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Xyaneon.Games.ConwaysGameOfLife.Avalonia">
+        Title="Conway's Game Of Life">
 
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open..."/>
+                <Separator/>
+                <MenuItem Header="_Quit"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About..."/>
+            </MenuItem>
+        </Menu>
+
+        <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </DockPanel>
 
 </Window>
