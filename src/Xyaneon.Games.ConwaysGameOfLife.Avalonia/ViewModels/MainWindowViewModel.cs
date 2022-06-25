@@ -1,5 +1,4 @@
-﻿using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
+﻿using Avalonia.Controls.ApplicationLifetimes;
 using ReactiveUI;
 using System.Reactive;
 
@@ -18,15 +17,9 @@ public class MainWindowViewModel : ViewModelBase
 
     void RunQuitCommand()
     {
-        Application? currentApplication = Application.Current;
-        if (currentApplication != null)
+        if (App.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            IApplicationLifetime? lifetime = currentApplication.ApplicationLifetime;
-            if (lifetime != null)
-            {
-                var classicDesktopLifetime = (IClassicDesktopStyleApplicationLifetime)lifetime;
-                classicDesktopLifetime.Shutdown();
-            }
+            desktop.Shutdown();
         }
     }
 }
