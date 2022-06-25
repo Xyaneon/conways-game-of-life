@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Xyaneon.Games.ConwaysGameOfLife.Core\Xyaneon.Games.ConwaysGameOfLife.Core.csproj" />
+    <ProjectReference Include="..\Xyaneon.Games.ConwaysGameOfLife.FileIO\Xyaneon.Games.ConwaysGameOfLife.FileIO.csproj" />
   </ItemGroup>
 
   <ItemGroup>
