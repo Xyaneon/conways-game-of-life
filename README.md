@@ -6,7 +6,7 @@ This project implements [Conway's Game of Life](https://en.wikipedia.org/wiki/Co
 
 The main project in this solution is a console app.
 
-To run it, you will first need .NET 6 installed. Once this is set up, navigate into the repository root and run the following command:
+To run it, you will first need [.NET 6][Install .NET 6] installed. Once this is set up, navigate into the repository root and run the following command:
 
 ```Bash
 dotnet run --project src/Xyaneon.Games.ConwaysGameOfLife.CLI/Xyaneon.Games.ConwaysGameOfLife.CLI.csproj --file <file_name_here>
@@ -27,3 +27,6 @@ This project is my entry into a sort of coding competition among friends.
 ## License
 
 This project is free and open-source software (FOSS) released under an MIT license. See [LICENSE.txt](https://github.com/Xyaneon/conways-game-of-life/blob/main/LICENSE.txt) for details.
+
+
+[Install .NET 6]: https://dotnet.microsoft.com/en-us/download/dotnet/6.0
