@@ -15,9 +15,9 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_Open..."/>
+                <MenuItem Header="_Open..." Command="{Binding OpenCommand}" HotKey="Ctrl+O"/>
                 <Separator/>
-                <MenuItem Header="_Quit" Command="{Binding QuitCommand}"/>
+                <MenuItem Header="_Quit" Command="{Binding QuitCommand}" HotKey="Ctrl+Q"/>
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_About..."/>
