@@ -24,6 +24,7 @@ public class MainWindowViewModel : ViewModelBase
         if (App.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             var dialog = new OpenFileDialog();
+            dialog.Title = "Open Game of Life pattern file";
             var plaintextFileFilter = new FileDialogFilter {
                 Name = "Plaintext files (*.cells)",
                 Extensions = { "cells" },
