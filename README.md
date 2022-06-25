@@ -20,6 +20,24 @@ dotnet run --project src/Xyaneon.Games.ConwaysGameOfLife.CLI/Xyaneon.Games.Conwa
 
 The console app is interactive. It will print the updated state into the terminal each time you press any key, until you press <kbd>Q</kbd> to quit.
 
+### Standalone executable
+
+The above instructions will give you a framework-dependent executable you can quickly run if `dotnet` is installed locally. It is also possible to create a standalone command line executable that should not need .NET to be installed to run.
+
+To do this, run the following command (replace `linux-x64` with your target platform if needed):
+
+```Bash
+dotnet publish -c Release -r linux-x64 --self-contained true
+```
+
+This will create an executable file named **`Xyaneon.Games.ConwaysGameOfLife.CLI`** in the `src/Xyaneon.Games.ConwaysGameOfLife.CLI/bin/Release/net6.0/linux-x64/publish` directory.
+
+You can then place this executable wherever you like, and run it from within the same directory with a command like the following:
+
+```Bash
+./Xyaneon.Games.ConwaysGameOfLife.CLI --file <your pattern file path>
+```
+
 ## Background
 
 This project is my entry into a sort of coding competition among friends.
