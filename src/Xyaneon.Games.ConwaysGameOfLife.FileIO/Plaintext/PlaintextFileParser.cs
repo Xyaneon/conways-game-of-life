@@ -5,6 +5,12 @@ namespace Xyaneon.Games.ConwaysGameOfLife.FileIO.Plaintext;
 
 public static class PlaintextFileParser
 {
+    /// <summary>
+    /// Parses the provided collection of lines as a Plaintext file.
+    /// </summary>
+    /// <param name="lines">The collection of lines to parse as a Plaintext file.</param>
+    /// <returns>A new <see cref="PlaintextFileContents"/> containing the parsed data.</returns>
+    /// <exception cref="FormatException"><paramref name="lines"/> does not conform to the Plaintext file format.</exception>
     public static PlaintextFileContents ParseLines(IEnumerable<string> lines)
     {
         bool nameLineWasParsed = false;
