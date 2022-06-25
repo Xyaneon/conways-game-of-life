@@ -11,7 +11,7 @@ public static class PlaintextFileParser
     /// <param name="lines">The collection of lines to parse as a Plaintext file.</param>
     /// <returns>A new <see cref="PlaintextFileContents"/> containing the parsed data.</returns>
     /// <exception cref="FormatException"><paramref name="lines"/> does not conform to the Plaintext file format.</exception>
-    public static PlaintextFileContents ParseLines(IEnumerable<string> lines)
+    public static PlaintextFileContents ParseLines([DisallowNull] IEnumerable<string> lines)
     {
         bool nameLineWasParsed = false;
         bool descriptionWasParsed = false;
