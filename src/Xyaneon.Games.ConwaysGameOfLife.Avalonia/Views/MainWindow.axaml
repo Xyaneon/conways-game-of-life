@@ -55,18 +55,18 @@
                     <TextBlock Grid.Row="0" Grid.Column="0"
                                VerticalAlignment="Center">Name:</TextBlock>
                     <TextBox Grid.Row="0" Grid.Column="1"
+                             Text="{Binding PatternName}"
                              Watermark="Enter name here"
-                             Margin="2">
-                    </TextBox>
+                             Margin="2"/>
                     
                     <TextBlock Grid.Row="1" Grid.Column="0"
                                Margin="0 9 4 0">Description:</TextBlock>
                     <TextBox Grid.Row="1" Grid.Column="1"
+                             Text="{Binding PatternDescription}"
                              Watermark="Enter description here"
                              AcceptsReturn="True"
                              TextWrapping="Wrap"
-                             Margin="2">
-                    </TextBox>
+                             Margin="2"/>
                 </Grid>
             </Expander>
         </StackPanel>
