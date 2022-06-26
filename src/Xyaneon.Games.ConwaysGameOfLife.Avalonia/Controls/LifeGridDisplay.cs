@@ -45,6 +45,16 @@ public class LifeGridDisplay : Control
         }
     }
 
+    protected override void OnPropertyChanged<T>(AvaloniaPropertyChangedEventArgs<T> change)
+    {
+        base.OnPropertyChanged(change);
+
+        if (change.Property.Name == nameof(State))
+        {
+            InvalidateVisual();
+        }
+    }
+
     private void DrawGridState(DrawingContext context)
     {
         double controlWidth = this.Bounds.Width;
