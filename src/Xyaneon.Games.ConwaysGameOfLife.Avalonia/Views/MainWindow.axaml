@@ -3,7 +3,9 @@
         xmlns:vm="using:Xyaneon.Games.ConwaysGameOfLife.Avalonia.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="600"
+        Width="600"
+        Height="600"
         x:Class="Xyaneon.Games.ConwaysGameOfLife.Avalonia.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="Conway's Game Of Life">
@@ -13,18 +15,81 @@
     </Design.DataContext>
 
     <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
-                <MenuItem Header="_Open..." Command="{Binding OpenCommand}" HotKey="Ctrl+O" InputGesture="Ctrl+O"/>
-                <Separator/>
-                <MenuItem Header="_Quit" Command="{Binding QuitCommand}" HotKey="Ctrl+Q" InputGesture="Ctrl+Q"/>
-            </MenuItem>
-            <MenuItem Header="_Help">
-                <MenuItem Header="_About..."/>
-            </MenuItem>
-        </Menu>
+        <StackPanel DockPanel.Dock="Top"
+                    Orientation="Vertical">
+            <Menu>
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open..." Command="{Binding OpenCommand}" HotKey="Ctrl+O" InputGesture="Ctrl+O"/>
+                    <Separator/>
+                    <MenuItem Header="_Quit" Command="{Binding QuitCommand}" HotKey="Ctrl+Q" InputGesture="Ctrl+Q"/>
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Header="_About..."/>
+                </MenuItem>
+            </Menu>
 
-        <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Expander Header="Pattern info"
+                      Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0"
+                               VerticalAlignment="Center">Name:</TextBlock>
+                    <TextBox Grid.Row="0" Grid.Column="1"
+                             Watermark="Enter name here"
+                             Margin="2">
+                    </TextBox>
+                    
+                    <TextBlock Grid.Row="1" Grid.Column="0"
+                               Margin="0 9 4 0">Description:</TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1"
+                             Watermark="Enter description here"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"
+                             Margin="2">
+                    </TextBox>
+                </Grid>
+            </Expander>
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Bottom"
+                    Orientation="Horizontal"
+                    Margin="5">
+            <Button>Tick</Button>
+            <TextBlock VerticalAlignment="Center"
+                       Margin="5 0 0 0">Tick #123</TextBlock>
+        </StackPanel>
+
+        <Border Background="White"
+                BorderBrush="Gray"
+                BorderThickness="2"
+                Margin="5">
+            <Viewbox Stretch="Uniform">
+                <Grid ShowGridLines="True" Width="400" Height="400">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </Viewbox>
+        </Border>
+
     </DockPanel>
 
 </Window>
