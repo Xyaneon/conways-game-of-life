@@ -32,6 +32,13 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
+                <MenuItem Header="_Simulation">
+                    <MenuItem Header="_Tick" Command="{Binding TickCommand}" HotKey="Ctrl+T" InputGesture="Ctrl+T">
+                        <MenuItem.Icon>
+                            <PathIcon Data="{StaticResource next_regular}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
                 <MenuItem Header="_Help">
                     <MenuItem Header="_About...">
                         <MenuItem.Icon>
