@@ -89,7 +89,7 @@
                 BorderBrush="Gray"
                 BorderThickness="2"
                 Margin="5">
-            <controls:LifeGridDisplay x:Name="gridDisplay"/>
+            <controls:LifeGridDisplay State="{Binding PatternState, Mode=OneWay}"/>
         </Border>
 
     </DockPanel>

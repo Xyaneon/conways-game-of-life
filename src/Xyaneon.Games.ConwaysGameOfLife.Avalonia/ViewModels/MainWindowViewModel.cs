@@ -1,8 +1,10 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using ReactiveUI;
+using System.IO;
 using System.Reactive;
 using System.Threading.Tasks;
+using Xyaneon.Games.ConwaysGameOfLife.Avalonia.Models;
 using Xyaneon.Games.ConwaysGameOfLife.FileIO.Plaintext;
 
 namespace Xyaneon.Games.ConwaysGameOfLife.Avalonia.ViewModels;
@@ -13,10 +15,12 @@ public class MainWindowViewModel : ViewModelBase
     {
         OpenCommand = ReactiveCommand.CreateFromTask(RunOpenCommand);
         QuitCommand = ReactiveCommand.Create(RunQuitCommand);
+        _patternState = null;
     }
 
     private string? _patternDescription;
     private string? _patternName;
+    private GameOfLifeState? _patternState;
 
     public string Greeting => "Welcome to Avalonia!";
 
@@ -32,6 +36,12 @@ public class MainWindowViewModel : ViewModelBase
     {
         get => _patternName;
         set => this.RaiseAndSetIfChanged(ref _patternName, value);
+    }
+
+    public GameOfLifeState? PatternState
+    {
+        get => _patternState;
+        set => this.RaiseAndSetIfChanged(ref _patternState, value);
     }
 
     public ReactiveCommand<Unit, Unit> QuitCommand { get; }
@@ -55,10 +65,12 @@ public class MainWindowViewModel : ViewModelBase
 
             if (paths is not null)
             {
-                var fileInfo = new System.IO.FileInfo(paths[0]);
+                var fileInfo = new FileInfo(paths[0]);
                 PlaintextFileContents fileContents = PlaintextFileReader.ReadFile(fileInfo);
+                
                 PatternName = fileContents.Name;
                 PatternDescription = fileContents.Description;
+                PatternState = new GameOfLifeState(fileContents.State);
             }
         }
     }

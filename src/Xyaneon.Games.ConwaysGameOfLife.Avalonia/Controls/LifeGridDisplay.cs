@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
+using Xyaneon.Games.ConwaysGameOfLife.Avalonia.Models;
 
 namespace Xyaneon.Games.ConwaysGameOfLife.Avalonia.Controls;
 
@@ -12,34 +13,24 @@ public class LifeGridDisplay : Control
         _cellOutlinePen = new Pen(_cellOutlineBrush);
         _livingCellBrush = Brushes.Black;
         _deadCellBrush = Brushes.White;
-
-        // State = null;
-        State = new bool[5, 6] {
-            { false, false, false, false, false, false },
-            { false, false, true, true, false, false },
-            { false, true, false, false, true, false },
-            { false, false, true, true, false, false },
-            { false, false, false, false, false, false },
-        };
     }
 
     private IBrush _cellOutlineBrush;
     private IPen _cellOutlinePen;
     private IBrush _livingCellBrush;
     private IBrush _deadCellBrush;
-    private int _numRows;
-    private int _numCols;
-    private bool[,]? _state;
+    private GameOfLifeState? _state;
 
-    public bool[,]? State
+    public static readonly DirectProperty<LifeGridDisplay, GameOfLifeState?> StateProperty =
+        AvaloniaProperty.RegisterDirect<LifeGridDisplay, GameOfLifeState?>(
+            nameof(State),
+            lifeGridDisplay => lifeGridDisplay.State,
+            (lifeGridDisplay, setterValue) => lifeGridDisplay.State = setterValue);
+
+    public GameOfLifeState? State
     {
         get => _state;
-        set
-        {
-            _numRows = value?.GetLength(0) ?? 0;
-            _numCols = value?.GetLength(1) ?? 0;
-            _state = value;
-        }
+        set => SetAndRaise(StateProperty, ref _state, value);
     }
 
     public override void Render(DrawingContext context)
@@ -59,19 +50,19 @@ public class LifeGridDisplay : Control
         double controlWidth = this.Bounds.Width;
         double controlHeight = this.Bounds.Height;
 
-        double cellWidth = controlWidth / _numCols;
-        double cellHeight = controlHeight / _numRows;
+        double cellWidth = controlWidth / State!.ColumnCount;
+        double cellHeight = controlHeight / State!.RowCount;
 
-        for (int x = 0; x < _numCols; x++)
+        for (int x = 0; x < State!.ColumnCount; x++)
         {
-            for (int y = 0; y < _numRows; y++)
+            for (int y = 0; y < State!.RowCount; y++)
             {
                 double left = x * cellWidth;
                 double top = y * cellHeight;
                 var cellBorderRect = new Rect(left, top, cellWidth, cellHeight);
                 context.DrawRectangle(null, _cellOutlinePen, cellBorderRect);
 
-                if (State![y, x])
+                if (State!.IsCellAliveAt(y, x))
                 {
                     int cellPadding = 1;
                     var cellInteriorRect = ShrinkCenteredRect(cellBorderRect, cellPadding);
