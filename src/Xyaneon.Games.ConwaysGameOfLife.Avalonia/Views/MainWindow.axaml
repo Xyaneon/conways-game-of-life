@@ -19,12 +19,24 @@
                     Orientation="Vertical">
             <Menu>
                 <MenuItem Header="_File">
-                    <MenuItem Header="_Open..." Command="{Binding OpenCommand}" HotKey="Ctrl+O" InputGesture="Ctrl+O"/>
+                    <MenuItem Header="_Open..." Command="{Binding OpenCommand}" HotKey="Ctrl+O" InputGesture="Ctrl+O">
+                        <MenuItem.Icon>
+                            <PathIcon Data="{StaticResource folder_open_regular}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <Separator/>
-                    <MenuItem Header="_Quit" Command="{Binding QuitCommand}" HotKey="Ctrl+Q" InputGesture="Ctrl+Q"/>
+                    <MenuItem Header="_Quit" Command="{Binding QuitCommand}" HotKey="Ctrl+Q" InputGesture="Ctrl+Q">
+                        <MenuItem.Icon>
+                            <PathIcon Data="{StaticResource pane_close_regular}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="_Help">
-                    <MenuItem Header="_About..."/>
+                    <MenuItem Header="_About...">
+                        <MenuItem.Icon>
+                            <PathIcon Data="{StaticResource info_regular}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
             </Menu>
 
@@ -62,7 +74,12 @@
         <StackPanel DockPanel.Dock="Bottom"
                     Orientation="Horizontal"
                     Margin="5">
-            <Button>Tick</Button>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <PathIcon Data="{StaticResource next_regular}"/>
+                    <TextBlock VerticalAlignment="Center" Margin="4 0 0 0">Tick</TextBlock>
+                </StackPanel>
+            </Button>
             <TextBlock VerticalAlignment="Center"
                        Margin="5 0 0 0">Tick #123</TextBlock>
         </StackPanel>
