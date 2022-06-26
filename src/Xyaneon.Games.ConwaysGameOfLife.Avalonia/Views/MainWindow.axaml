@@ -38,6 +38,12 @@
                             <PathIcon Data="{StaticResource next_regular}"/>
                         </MenuItem.Icon>
                     </MenuItem>
+                    <Separator/>
+                    <MenuItem Header="_Delete grid" Command="{Binding DeleteGridCommand}" HotKey="Ctrl+D" InputGesture="Ctrl+D">
+                        <MenuItem.Icon>
+                            <PathIcon Data="{StaticResource delete_regular}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="_Help">
                     <MenuItem Header="_About...">

@@ -14,10 +14,11 @@ public class MainWindowViewModel : ViewModelBase
 {
     public MainWindowViewModel()
     {
+        DeleteGridCommand = ReactiveCommand.Create(RunDeleteGridCommand);
         OpenCommand = ReactiveCommand.CreateFromTask(RunOpenCommand);
         TickCommand = ReactiveCommand.Create(RunTickCommand);
         QuitCommand = ReactiveCommand.Create(RunQuitCommand);
-        
+
         _patternState = null;
     }
 
@@ -27,6 +28,8 @@ public class MainWindowViewModel : ViewModelBase
 
     public string Greeting => "Welcome to Avalonia!";
 
+    public ReactiveCommand<Unit, Unit> DeleteGridCommand { get; }
+    
     public ReactiveCommand<Unit, Unit> OpenCommand { get; }
 
     public string? PatternDescription
@@ -50,6 +53,13 @@ public class MainWindowViewModel : ViewModelBase
     public ReactiveCommand<Unit, Unit> TickCommand { get; }
     
     public ReactiveCommand<Unit, Unit> QuitCommand { get; }
+
+    void RunDeleteGridCommand()
+    {
+        PatternName = null;
+        PatternDescription = null;
+        PatternState = null;
+    }
 
     public async Task RunOpenCommand()
     {
