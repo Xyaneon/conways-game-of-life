@@ -75,7 +75,7 @@
         <StackPanel DockPanel.Dock="Bottom"
                     Orientation="Horizontal"
                     Margin="5">
-            <Button>
+            <Button Command="{Binding TickCommand}">
                 <StackPanel Orientation="Horizontal">
                     <PathIcon Data="{StaticResource next_regular}"/>
                     <TextBlock VerticalAlignment="Center" Margin="4 0 0 0">Tick</TextBlock>

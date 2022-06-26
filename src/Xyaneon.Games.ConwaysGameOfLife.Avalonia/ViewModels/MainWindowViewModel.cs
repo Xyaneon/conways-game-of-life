@@ -5,6 +5,7 @@ using System.IO;
 using System.Reactive;
 using System.Threading.Tasks;
 using Xyaneon.Games.ConwaysGameOfLife.Avalonia.Models;
+using Xyaneon.Games.ConwaysGameOfLife.Core;
 using Xyaneon.Games.ConwaysGameOfLife.FileIO.Plaintext;
 
 namespace Xyaneon.Games.ConwaysGameOfLife.Avalonia.ViewModels;
@@ -14,7 +15,9 @@ public class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         OpenCommand = ReactiveCommand.CreateFromTask(RunOpenCommand);
+        TickCommand = ReactiveCommand.Create(RunTickCommand);
         QuitCommand = ReactiveCommand.Create(RunQuitCommand);
+        
         _patternState = null;
     }
 
@@ -44,6 +47,8 @@ public class MainWindowViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _patternState, value);
     }
 
+    public ReactiveCommand<Unit, Unit> TickCommand { get; }
+    
     public ReactiveCommand<Unit, Unit> QuitCommand { get; }
 
     public async Task RunOpenCommand()
@@ -67,11 +72,21 @@ public class MainWindowViewModel : ViewModelBase
             {
                 var fileInfo = new FileInfo(paths[0]);
                 PlaintextFileContents fileContents = PlaintextFileReader.ReadFile(fileInfo);
-                
+
                 PatternName = fileContents.Name;
                 PatternDescription = fileContents.Description;
                 PatternState = new GameOfLifeState(fileContents.State);
             }
+        }
+    }
+
+    void RunTickCommand()
+    {
+        if (PatternState is not null)
+        {
+            bool[,] currentState = PatternState.To2DArray();
+            bool[,] nextState = StateUpdater.GetNextState(currentState);
+            PatternState = new GameOfLifeState(nextState);
         }
     }
 
