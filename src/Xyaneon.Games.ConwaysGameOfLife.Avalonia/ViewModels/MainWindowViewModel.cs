@@ -40,26 +40,25 @@ public class MainWindowViewModel : ViewModelBase
     {
         if (App.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            var dialog = new OpenFileDialog();
-            dialog.Title = "Open Game of Life pattern file";
-            var plaintextFileFilter = new FileDialogFilter {
-                Name = "Plaintext files (*.cells)",
-                Extensions = { "cells" },
-            };
-            dialog.Filters.Add(plaintextFileFilter);
-
-            var result = await dialog.ShowAsync(desktop.MainWindow);
-
-            if (result is not null)
+            var dialog = new OpenFileDialog
             {
-                foreach (var path in result)
-                {
-                    System.Console.WriteLine($"path: {path}");
-                    var fileInfo = new System.IO.FileInfo(path);
-                    PlaintextFileContents fileContents = PlaintextFileReader.ReadFile(fileInfo);
-                    PatternName = fileContents.Name;
-                    PatternDescription = fileContents.Description;
-                }
+                Title = "Open Game of Life pattern file",
+                Filters = {
+                    new FileDialogFilter {
+                        Name = "Plaintext files (*.cells)",
+                        Extensions = { "cells" },
+                    },
+                },
+            };
+
+            string[]? paths = await dialog.ShowAsync(desktop.MainWindow);
+
+            if (paths is not null)
+            {
+                var fileInfo = new System.IO.FileInfo(paths[0]);
+                PlaintextFileContents fileContents = PlaintextFileReader.ReadFile(fileInfo);
+                PatternName = fileContents.Name;
+                PatternDescription = fileContents.Description;
             }
         }
     }
