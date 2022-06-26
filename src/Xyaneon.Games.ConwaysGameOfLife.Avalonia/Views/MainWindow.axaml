@@ -95,7 +95,8 @@
                 </StackPanel>
             </Button>
             <TextBlock VerticalAlignment="Center"
-                       Margin="5 0 0 0">Tick #123</TextBlock>
+                       Margin="5 0 0 0"
+                       Text="{Binding TickNumber}"/>
         </StackPanel>
 
         <Border Background="White"

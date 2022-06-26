@@ -25,6 +25,7 @@ public class MainWindowViewModel : ViewModelBase
     private string? _patternDescription;
     private string? _patternName;
     private GameOfLifeState? _patternState;
+    private int _tickNumber;
 
     public string Greeting => "Welcome to Avalonia!";
 
@@ -51,6 +52,12 @@ public class MainWindowViewModel : ViewModelBase
     }
 
     public ReactiveCommand<Unit, Unit> TickCommand { get; }
+
+    public int TickNumber
+    {
+        get => _tickNumber;
+        set => this.RaiseAndSetIfChanged(ref _tickNumber, value);
+    }
     
     public ReactiveCommand<Unit, Unit> QuitCommand { get; }
 
@@ -59,6 +66,7 @@ public class MainWindowViewModel : ViewModelBase
         PatternName = null;
         PatternDescription = null;
         PatternState = null;
+        TickNumber = 0;
     }
 
     public async Task RunOpenCommand()
@@ -86,6 +94,7 @@ public class MainWindowViewModel : ViewModelBase
                 PatternName = fileContents.Name;
                 PatternDescription = fileContents.Description;
                 PatternState = new GameOfLifeState(fileContents.State);
+                TickNumber = 0;
             }
         }
     }
@@ -97,6 +106,7 @@ public class MainWindowViewModel : ViewModelBase
             bool[,] currentState = PatternState.To2DArray();
             bool[,] nextState = StateUpdater.GetNextState(currentState);
             PatternState = new GameOfLifeState(nextState);
+            TickNumber++;
         }
     }
 
