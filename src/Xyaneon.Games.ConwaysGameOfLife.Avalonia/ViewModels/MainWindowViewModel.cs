@@ -27,8 +27,6 @@ public class MainWindowViewModel : ViewModelBase
     private GameOfLifeState? _patternState;
     private int _tickNumber;
 
-    public string Greeting => "Welcome to Avalonia!";
-
     public ReactiveCommand<Unit, Unit> DeleteGridCommand { get; }
     
     public ReactiveCommand<Unit, Unit> OpenCommand { get; }
