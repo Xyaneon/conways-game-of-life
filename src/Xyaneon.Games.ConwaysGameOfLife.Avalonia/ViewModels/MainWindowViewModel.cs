@@ -1,8 +1,10 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using ReactiveUI;
+using System;
 using System.IO;
 using System.Reactive;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Xyaneon.Games.ConwaysGameOfLife.Avalonia.Models;
 using Xyaneon.Games.ConwaysGameOfLife.Core;
@@ -14,9 +16,12 @@ public class MainWindowViewModel : ViewModelBase
 {
     public MainWindowViewModel()
     {
+        IObservable<bool> canRunTickCommand = this.WhenAnyValue(x => x.PatternState)
+            .Select(patternState => patternState is not null);
+
         DeleteGridCommand = ReactiveCommand.Create(RunDeleteGridCommand);
         OpenCommand = ReactiveCommand.CreateFromTask(RunOpenCommand);
-        TickCommand = ReactiveCommand.Create(RunTickCommand);
+        TickCommand = ReactiveCommand.Create(RunTickCommand, canRunTickCommand);
         QuitCommand = ReactiveCommand.Create(RunQuitCommand);
 
         _patternState = null;
