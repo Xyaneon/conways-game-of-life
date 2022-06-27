@@ -96,7 +96,7 @@
             </Button>
             <TextBlock VerticalAlignment="Center"
                        Margin="5 0 0 0"
-                       Text="{Binding TickNumber}"/>
+                       Text="{Binding TickNumber, StringFormat='Tick #\{0:N0\}'}"/>
         </StackPanel>
 
         <Border Background="White"
