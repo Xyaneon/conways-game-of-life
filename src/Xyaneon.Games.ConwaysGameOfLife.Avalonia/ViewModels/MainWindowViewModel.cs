@@ -63,10 +63,7 @@ public class MainWindowViewModel : ViewModelBase
 
     void RunDeleteGridCommand()
     {
-        PatternName = null;
-        PatternDescription = null;
-        PatternState = null;
-        TickNumber = 0;
+        SetSimulationData(null);
     }
 
     public async Task RunOpenCommand()
@@ -91,23 +88,14 @@ public class MainWindowViewModel : ViewModelBase
                 var fileInfo = new FileInfo(paths[0]);
                 PlaintextFileContents fileContents = PlaintextFileReader.ReadFile(fileInfo);
 
-                PatternName = fileContents.Name;
-                PatternDescription = fileContents.Description;
-                PatternState = new GameOfLifeState(fileContents.State);
-                TickNumber = 0;
+                SetSimulationData(new GameOfLifeState(fileContents.State), fileContents.Name, fileContents.Description);
             }
         }
     }
 
     void RunTickCommand()
     {
-        if (PatternState is not null)
-        {
-            bool[,] currentState = PatternState.To2DArray();
-            bool[,] nextState = StateUpdater.GetNextState(currentState);
-            PatternState = new GameOfLifeState(nextState);
-            TickNumber++;
-        }
+        TickState();
     }
 
     void RunQuitCommand()
@@ -115,6 +103,25 @@ public class MainWindowViewModel : ViewModelBase
         if (App.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.Shutdown();
+        }
+    }
+
+    void SetSimulationData(GameOfLifeState? state, string? name = null, string? description = null)
+    {
+        PatternState = state;
+        PatternName = name;
+        PatternDescription = description;
+        TickNumber = 0;
+    }
+
+    void TickState()
+    {
+        if (PatternState is not null)
+        {
+            bool[,] currentState = PatternState.To2DArray();
+            bool[,] nextState = StateUpdater.GetNextState(currentState);
+            PatternState = new GameOfLifeState(nextState);
+            TickNumber++;
         }
     }
 }
