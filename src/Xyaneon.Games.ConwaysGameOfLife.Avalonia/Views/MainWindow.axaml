@@ -1,0 +1,111 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Xyaneon.Games.ConwaysGameOfLife.Avalonia.ViewModels"
+        xmlns:controls="using:Xyaneon.Games.ConwaysGameOfLife.Avalonia.Controls"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="600"
+        Width="600"
+        Height="600"
+        x:Class="Xyaneon.Games.ConwaysGameOfLife.Avalonia.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Conway's Game Of Life">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top"
+                    Orientation="Vertical">
+            <Menu>
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open..." Command="{Binding OpenCommand}" HotKey="Ctrl+O" InputGesture="Ctrl+O">
+                        <MenuItem.Icon>
+                            <PathIcon Data="{StaticResource folder_open_regular}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Header="_Quit" Command="{Binding QuitCommand}" HotKey="Ctrl+Q" InputGesture="Ctrl+Q">
+                        <MenuItem.Icon>
+                            <PathIcon Data="{StaticResource pane_close_regular}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Simulation">
+                    <MenuItem Header="_Tick" Command="{Binding TickCommand}" HotKey="Ctrl+T" InputGesture="Ctrl+T">
+                        <MenuItem.Icon>
+                            <PathIcon Data="{StaticResource next_regular}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Header="_Delete grid" Command="{Binding DeleteGridCommand}" HotKey="Ctrl+D" InputGesture="Ctrl+D">
+                        <MenuItem.Icon>
+                            <PathIcon Data="{StaticResource delete_regular}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Header="_About...">
+                        <MenuItem.Icon>
+                            <PathIcon Data="{StaticResource info_regular}"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+
+            <Expander Header="Pattern info"
+                      Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0"
+                               VerticalAlignment="Center">Name:</TextBlock>
+                    <TextBox Grid.Row="0" Grid.Column="1"
+                             Text="{Binding PatternName}"
+                             Watermark="Enter name here"
+                             Margin="2"/>
+                    
+                    <TextBlock Grid.Row="1" Grid.Column="0"
+                               Margin="0 9 4 0">Description:</TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1"
+                             Text="{Binding PatternDescription}"
+                             Watermark="Enter description here"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"
+                             Margin="2"/>
+                </Grid>
+            </Expander>
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Bottom"
+                    Orientation="Horizontal"
+                    Margin="5">
+            <Button Command="{Binding TickCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <PathIcon Data="{StaticResource next_regular}"/>
+                    <TextBlock VerticalAlignment="Center" Margin="4 0 0 0">Tick</TextBlock>
+                </StackPanel>
+            </Button>
+            <TextBlock VerticalAlignment="Center"
+                       Margin="5 0 0 0"
+                       Text="{Binding TickNumber, StringFormat='Tick #\{0:N0\}'}"/>
+        </StackPanel>
+
+        <Border Background="White"
+                BorderBrush="Gray"
+                BorderThickness="2"
+                Margin="5">
+            <controls:LifeGridDisplay State="{Binding PatternState, Mode=OneWay}"/>
+        </Border>
+
+    </DockPanel>
+
+</Window>

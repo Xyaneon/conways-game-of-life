@@ -2,13 +2,28 @@
 
 ![Screenshot of CLI app in Ubuntu Terminal][CLI app screenshot]
 
-This project implements [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life).
+This project implements [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life) as a .NET 6 solution with C# 10. This solution includes both a console and a GUI app.
 
-## Usage
+## How to run the GUI app
 
-The main project in this solution is a console app.
+The graphical version of the application is implemented using [Avalonia UI].
+It has been tested to work at least on Ubuntu 22.04 LTS (Jammy Jellyfish).
 
-To run it, you will first need [.NET 6][Install .NET 6] installed. Once this is set up, navigate into the repository root and run the following command:
+To run the GUI app, you will first need [.NET 6][Install .NET 6] installed. Once this is set up, navigate into the repository root and run the following command:
+
+```Bash
+dotnet run --project src/Xyaneon.Games.ConwaysGameOfLife.Avalonia/Xyaneon.Games.ConwaysGameOfLife.Avalonia.csproj
+```
+
+The app can currently load Game of Life files in the [Plaintext file format](https://conwaylife.com/wiki/Plaintext) (`.cells` extension). You can either supply your own, or try one of the included examples in the `samples/` directory.
+
+## How to run the console app
+
+### Running the project with `dotnet`
+
+One of the main projects in this solution is a console app.
+
+To run the console app, you will first need [.NET 6][Install .NET 6] installed. Once this is set up, navigate into the repository root and run the following command:
 
 ```Bash
 dotnet run --project src/Xyaneon.Games.ConwaysGameOfLife.CLI/Xyaneon.Games.ConwaysGameOfLife.CLI.csproj --file <file_name_here>
@@ -22,7 +37,7 @@ dotnet run --project src/Xyaneon.Games.ConwaysGameOfLife.CLI/Xyaneon.Games.Conwa
 
 The console app is interactive. It will print the updated state into the terminal each time you press any key, until you press <kbd>Q</kbd> to quit.
 
-### Standalone executable
+### Creating a standalone executable
 
 The above instructions will give you a framework-dependent executable you can quickly run if `dotnet` is installed locally. It is also possible to create a standalone command line executable that should not need .NET to be installed to run.
 
@@ -49,5 +64,6 @@ This project is my entry into a sort of coding competition among friends.
 This project is free and open-source software (FOSS) released under an MIT license. See [LICENSE.txt](https://github.com/Xyaneon/conways-game-of-life/blob/main/LICENSE.txt) for details.
 
 
+[Avalonia UI]: http://avaloniaui.net/
 [CLI app screenshot]: https://github.com/Xyaneon/conways-game-of-life/blob/main/screenshots/cli-screenshot.png
 [Install .NET 6]: https://dotnet.microsoft.com/en-us/download/dotnet/6.0
