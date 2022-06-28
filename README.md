@@ -2,6 +2,8 @@
 
 ![Screenshot of CLI app in Ubuntu Terminal][CLI app screenshot]
 
+![dotnet workflow](https://github.com/Xyaneon/conways-game-of-life/actions/workflows/dotnet.yml/badge.svg)
+
 This project implements [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life) as a .NET 6 solution with C# 10. This solution includes both a console and a GUI app.
 
 ## How to run the GUI app
