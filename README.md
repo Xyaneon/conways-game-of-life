@@ -3,6 +3,7 @@
 ![Screenshot of CLI app in Ubuntu Terminal][CLI app screenshot]
 
 ![dotnet workflow](https://github.com/Xyaneon/conways-game-of-life/actions/workflows/dotnet.yml/badge.svg)
+[![License](https://img.shields.io/github/license/Xyaneon/conways-game-of-life)][License]
 
 This project implements [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life) as a .NET 6 solution with C# 10. This solution includes both a console and a GUI app.
 
@@ -63,9 +64,10 @@ This project is my entry into a sort of coding competition among friends.
 
 ## License
 
-This project is free and open-source software (FOSS) released under an MIT license. See [LICENSE.txt](https://github.com/Xyaneon/conways-game-of-life/blob/main/LICENSE.txt) for details.
+This project is free and open-source software (FOSS) released under an MIT license. See [LICENSE.txt][License] for details.
 
 
 [Avalonia UI]: http://avaloniaui.net/
 [CLI app screenshot]: https://github.com/Xyaneon/conways-game-of-life/blob/main/screenshots/cli-screenshot.png
 [Install .NET 6]: https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+[License]: https://github.com/Xyaneon/conways-game-of-life/blob/main/LICENSE.txt
