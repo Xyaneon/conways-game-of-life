@@ -63,6 +63,11 @@ You can then place this executable wherever you like, and run it from within the
 ## Background
 
 This project is my entry into a sort of coding competition among friends.
+We were each tasked with creating our own implementation of Conway's Game of Life, with any technology or features of our choosing.
+Our deadline was June 30, 2022.
+
+Other entries I could link to are listed below:
+- https://github.com/jquesada2/game-of-life
 
 ## License
 
