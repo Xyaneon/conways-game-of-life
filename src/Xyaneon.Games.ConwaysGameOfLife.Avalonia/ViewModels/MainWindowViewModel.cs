@@ -2,9 +2,11 @@
 using Avalonia.Controls.ApplicationLifetimes;
 using ReactiveUI;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reactive;
 using System.Reactive.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Xyaneon.Games.ConwaysGameOfLife.Avalonia.Models;
 using Xyaneon.Games.ConwaysGameOfLife.Core;
@@ -23,6 +25,7 @@ public class MainWindowViewModel : ViewModelBase
         OpenCommand = ReactiveCommand.CreateFromTask(RunOpenCommand);
         TickCommand = ReactiveCommand.Create(RunTickCommand, canRunTickCommand);
         QuitCommand = ReactiveCommand.Create(RunQuitCommand);
+        VisitWebsiteCommand = ReactiveCommand.Create(RunVisitWebsiteCommand);
 
         _patternState = null;
     }
@@ -63,6 +66,8 @@ public class MainWindowViewModel : ViewModelBase
     }
     
     public ReactiveCommand<Unit, Unit> QuitCommand { get; }
+    
+    public ReactiveCommand<Unit, Unit> VisitWebsiteCommand { get; }
 
     void RunDeleteGridCommand()
     {
@@ -109,6 +114,11 @@ public class MainWindowViewModel : ViewModelBase
         }
     }
 
+    void RunVisitWebsiteCommand()
+    {
+        VisitWebsiteInDefaultBrowser("https://github.com/Xyaneon/conways-game-of-life");
+    }
+
     void SetSimulationData(GameOfLifeState? state, string? name = null, string? description = null)
     {
         PatternState = state;
@@ -125,6 +135,37 @@ public class MainWindowViewModel : ViewModelBase
             bool[,] nextState = StateUpdater.GetNextState(currentState);
             PatternState = new GameOfLifeState(nextState);
             TickNumber++;
+        }
+    }
+
+    void VisitWebsiteInDefaultBrowser(string url)
+    {
+        // Below code credit to this blog post:
+        // https://brockallen.com/2016/09/24/process-start-for-urls-on-net-core/
+        try
+        {
+            Process.Start(url);
+        }
+        catch
+        {
+            // hack because of this: https://github.com/dotnet/corefx/issues/10361
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                url = url.Replace("&", "^&");
+                Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Process.Start("xdg-open", url);
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                Process.Start("open", url);
+            }
+            else
+            {
+                throw;
+            }
         }
     }
 }

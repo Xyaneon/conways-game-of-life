@@ -46,9 +46,9 @@
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="_Help">
-                    <MenuItem Header="_About...">
+                    <MenuItem Header="_Visit website" Command="{Binding VisitWebsiteCommand}" HotKey="F1" InputGesture="F1">
                         <MenuItem.Icon>
-                            <PathIcon Data="{StaticResource info_regular}"/>
+                            <PathIcon Data="{StaticResource globe_regular}"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
