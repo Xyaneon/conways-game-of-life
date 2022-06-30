@@ -1,13 +1,13 @@
 # Conway's Game of Life
 
-![Screenshot of CLI app in Ubuntu Terminal][CLI app screenshot]
-
 ![dotnet workflow](https://github.com/Xyaneon/conways-game-of-life/actions/workflows/dotnet.yml/badge.svg)
 [![License](https://img.shields.io/github/license/Xyaneon/conways-game-of-life)][License]
 
 This project implements [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life) as a .NET 6 solution with C# 10. This solution includes both a console and a GUI app.
 
 ## How to run the GUI app
+
+![Screenshot of GUI app on Windows 10][GUI app screenshot]
 
 The graphical version of the application is implemented using [Avalonia UI].
 It has been tested to work at least on Ubuntu 22.04 LTS (Jammy Jellyfish).
@@ -21,6 +21,8 @@ dotnet run --project src/Xyaneon.Games.ConwaysGameOfLife.Avalonia/Xyaneon.Games.
 The app can currently load Game of Life files in the [Plaintext file format](https://conwaylife.com/wiki/Plaintext) (`.cells` extension). You can either supply your own, or try one of the included examples in the `samples/` directory.
 
 ## How to run the console app
+
+![Screenshot of CLI app in Ubuntu Terminal][CLI app screenshot]
 
 ### Running the project with `dotnet`
 
@@ -69,5 +71,6 @@ This project is free and open-source software (FOSS) released under an MIT licen
 
 [Avalonia UI]: http://avaloniaui.net/
 [CLI app screenshot]: https://github.com/Xyaneon/conways-game-of-life/blob/main/screenshots/cli-screenshot.png
+[GUI app screenshot]: https://github.com/Xyaneon/conways-game-of-life/blob/main/screenshots/gui-screenshot.png
 [Install .NET 6]: https://dotnet.microsoft.com/en-us/download/dotnet/6.0
 [License]: https://github.com/Xyaneon/conways-game-of-life/blob/main/LICENSE.txt
