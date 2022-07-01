@@ -10,7 +10,7 @@ This project implements [Conway's Game of Life](https://en.wikipedia.org/wiki/Co
 ![Screenshot of GUI app on Windows 10][GUI app screenshot]
 
 The graphical version of the application is implemented using [Avalonia UI].
-It has been tested to work at least on Ubuntu 22.04 LTS (Jammy Jellyfish).
+It has been tested to work at least on Ubuntu 22.04 LTS (Jammy Jellyfish) and Windows 10 21H1.
 
 To run the GUI app, you will first need [.NET 6][Install .NET 6] installed. Once this is set up, navigate into the repository root and run the following command:
 
