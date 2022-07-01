@@ -68,6 +68,7 @@ Our deadline was June 30, 2022.
 
 Other entries I could link to are listed below:
 - https://github.com/jquesada2/game-of-life
+- https://github.com/kjarosz/HaskellGameOfLife
 
 ## License
 
